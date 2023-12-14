@@ -8,22 +8,22 @@ const cost = document.querySelector('.cost')
 
 const checkValue = () => {
     if (inputPay.value == '' || inputPeople.value == '' || tipMenu.value == 0) {
-        errorInfo.textContent = 'Uzupełnij wszystkie pola!'
-        costInfo.style.display = 'none'
+        costInfo.style.visibility = 'hidden'
+        errorInfo.style.visibility = 'visible'
     } else {
-        errorInfo.textContent = ''
+        errorInfo.style.visibility = 'hidden'
         countTip()
     }
 }
 
 const countTip = () => {
    
-    const price = parseFloat(inputPay.value)
-    const people = parseInt(inputPeople.value)
+    const price = parseFloat(inputPay.value) // zwraca liczbę po przecinku
+    const people = parseInt(inputPeople.value) // zwraca liczbę całkowitą
     const tip = parseFloat(tipMenu.value)
 
     const sum = (price + price * tip) / people
-    costInfo.style.display = 'block'
+    costInfo.style.visibility = 'visible'
     cost.textContent = sum.toFixed(2)
 }
 
